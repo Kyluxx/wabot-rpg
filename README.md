@@ -1,6 +1,6 @@
-# Gicell Senpai Bot
+# Luxx RPG Bot
 
-Bot WhatsApp berbasis game Gicell Senpai yang memungkinkan pemain untuk menikmati fitur-fitur game Gicell Senpai melalui platform WhatsApp.
+Bot WhatsApp berbasis Role-Play-Game (RPG) yang memungkinkan pemain untuk menikmati fitur-fitur RPG melalui platform WhatsApp.
 
 ## Fitur Utama
 
@@ -20,7 +20,7 @@ Bot WhatsApp berbasis game Gicell Senpai yang memungkinkan pemain untuk menikmat
 
 1. Clone repository ini
    ```
-   git clone https://github.com/yourusername/gicell-senpai-bot.git
+   git clone https://github.com/Kyluxx/rpg-wabot.git
    ```
 
 2. Instal dependencies
@@ -41,7 +41,7 @@ Bot WhatsApp berbasis game Gicell Senpai yang memungkinkan pemain untuk menikmat
 
 1. Clone repository ini
    ```
-   git clone https://github.com/Gicelldev/gicell-senpai-bot.git
+   git clone https://github.com/Kyluxx/rpg-wabot.git
    ```
 
 2. Buat file `.env` dengan variabel yang diperlukan
@@ -155,7 +155,7 @@ gicell-senpai-bot/
 
 ## Kontribusi
 
-Kami sangat menghargai kontribusi dari para pengembang untuk memperbaiki dan meningkatkan Gicell Senpai Bot.
+Kami sangat menghargai kontribusi dari para pengembang untuk memperbaiki dan meningkatkan Luxx RPG Bot.
 
 ### Cara Berkontribusi
 
@@ -164,7 +164,7 @@ Kami sangat menghargai kontribusi dari para pengembang untuk memperbaiki dan men
 
 2. **Clone Repository yang Sudah di-Fork**
    ```
-   git clone https://github.com/username-anda/gicell-senpai-bot.git
+   git clone https://github.com/username-anda/rpg-wabot.git
    ```
 
 3. **Buat Branch Baru**
@@ -203,4 +203,5 @@ MIT
 
 ## Author
 
-Gicell Senpai Developer # gicell-senpai-bot
+Rizky Pratama # rpg-wabot
+Gicell Senpai Developer # rpg-wabot
