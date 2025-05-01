@@ -14,7 +14,7 @@ const getHelp = async (command) => {
     
     // Daftar perintah yang tersedia
     const helpMessage = 
-`📖 *GICELL SENPAI BOT - BANTUAN* 📖
+`📖 *Luxx RPG Bot - BANTUAN* 📖
 
 *⚔️ PERINTAH DASAR ⚔️*
 !daftar [nama]     - Daftar sebagai pemain baru

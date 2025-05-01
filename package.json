@@ -1,7 +1,7 @@
 {
-  "name": "gicell-senpai-bot",
+  "name": "v1.0.0-alpha.1",
   "version": "1.0.0",
-  "description": "Bot WhatsApp berbasis game Gicell Senpai",
+  "description": "Bot WhatsApp berbasis game Kyluxx",
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
@@ -10,12 +10,12 @@
   },
   "keywords": [
     "whatsapp-bot",
-    "gicell-senpai",
+    "kyluxx",
     "game-bot",
     "mongodb",
     "baileys"
   ],
-  "author": "Gicell Senpai Developer",
+  "author": "Rizky Pratama | Kyluxx",
   "license": "MIT",
   "dependencies": {
     "@whiskeysockets/baileys": "^6.5.0",
