@@ -69,7 +69,7 @@ const handleCommand = async (sock, jid, senderId, command, args, msg) => {
     await sock.presenceSubscribe(jid);
     await delay(500);
     await sock.sendPresenceUpdate('composing', jid);
-    await delay(2000);
+    await delay(1000);
     await sock.sendPresenceUpdate('paused', jid);
     await sock.sendMessage(jid, { text }, {quoted: msg });
   }
@@ -482,7 +482,7 @@ const handleCommand = async (sock, jid, senderId, command, args, msg) => {
     
     // Kirim respons ke pengguna
     if (response) {
-      await sendMessageWTyping(jid, response.message, msg );
+      await sendMessageWTyping(jid, response.message, msg);
     }
   } catch (error) {
     logger.error(`[CMD_ERROR] Error saat menangani perintah: ${error.message}`, { 
