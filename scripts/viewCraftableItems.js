@@ -1,5 +1,5 @@
 // Script untuk menampilkan daftar item yang bisa di-craft dari file new_items_template.json
-require('dotenv').config({ path: '../.env' });
+require('dotenv').config({ path: `${__dirname}/../.env` });
 const fs = require('fs');
 const path = require('path');
 const mongoose = require('mongoose');

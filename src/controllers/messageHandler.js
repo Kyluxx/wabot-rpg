@@ -17,6 +17,8 @@ const { buyChips, sellChips, playDice, playSlot } = require('./gamblingControlle
 const reportController = require('./reportController');
 const monsterManager = require('../utils/monsterManager');
 
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 /**
  * Memproses pesan yang masuk dan mengarahkan ke handler yang sesuai
  * @param {Object} sock - Socket koneksi WhatsApp
@@ -25,6 +27,7 @@ const monsterManager = require('../utils/monsterManager');
 const processMessage = async (sock, msg) => {
   try {
     // Ekstrak data penting dari pesan
+    const messageContext = msg.message[0] || ''
     const messageContent = msg.message?.conversation || 
                            msg.message?.extendedTextMessage?.text || 
                            '';
@@ -45,7 +48,7 @@ const processMessage = async (sock, msg) => {
       const command = args.shift().toLowerCase(); // Ambil perintah dan ubah ke lowercase
       
       // Arahkan perintah ke handler yang sesuai
-      await handleCommand(sock, senderJid, senderId, command, args);
+      await handleCommand(sock, senderJid, senderId, command, args, msg);
     }
   } catch (error) {
     logger.error(`Error processing message: ${error.message}`);
@@ -60,7 +63,17 @@ const processMessage = async (sock, msg) => {
  * @param {String} command - Perintah yang diterima
  * @param {Array} args - Argumen perintah
  */
-const handleCommand = async (sock, jid, senderId, command, args) => {
+const handleCommand = async (sock, jid, senderId, command, args, msg) => {
+
+  const sendMessageWTyping = async (jid, text, m) => {
+    await sock.presenceSubscribe(jid);
+    await delay(500);
+    await sock.sendPresenceUpdate('composing', jid);
+    await delay(2000);
+    await sock.sendPresenceUpdate('paused', jid);
+    await sock.sendMessage(jid, { text }, {quoted: msg });
+  }
+
   try {
     let response = null;
     
@@ -469,7 +482,7 @@ const handleCommand = async (sock, jid, senderId, command, args) => {
     
     // Kirim respons ke pengguna
     if (response) {
-      await sock.sendMessage(jid, { text: response.message });
+      await sendMessageWTyping(jid, response.message, msg );
     }
   } catch (error) {
     logger.error(`[CMD_ERROR] Error saat menangani perintah: ${error.message}`, { 
@@ -478,8 +491,9 @@ const handleCommand = async (sock, jid, senderId, command, args) => {
       user: senderId,
       stack: error.stack
     });
-    await sock.sendMessage(jid, { text: 'Maaf, terjadi kesalahan. Silakan coba lagi nanti.' });
+    await sendMessageWTyping(jid, { text: 'Maaf, terjadi kesalahan. Silakan coba lagi nanti.'});
   }
 };
+
 
 module.exports = { processMessage }; 

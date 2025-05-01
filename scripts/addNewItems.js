@@ -1,5 +1,5 @@
 // Script untuk menambahkan item baru ke database dari file template
-require('dotenv').config({ path: '../.env' });
+require('dotenv').config({ path: `${__dirname}/../.env` });
 const fs = require('fs');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -23,7 +23,6 @@ async function addNewItems() {
     const itemsData = JSON.parse(fs.readFileSync(templatePath, 'utf8'));
     
     console.log(`Ditemukan ${itemsData.length} item untuk ditambahkan.`);
-    
     // Array untuk melacak hasil
     const results = {
       added: [],

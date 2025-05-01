@@ -5,6 +5,9 @@ const path = require('path');
 const logger = require('./utils/logger');
 const { processMessage } = require('./controllers/messageHandler');
 
+// Date ms untuk delay
+let lastMs = Date.now();
+
 // Pastikan direktori session ada
 const sessionPath = './session';
 if (!fs.existsSync(sessionPath)) {
@@ -22,7 +25,7 @@ const connectToWhatsApp = async () => {
     printQRInTerminal: true,
     auth: state,
     logger: logger,
-    browser: ['Gicell Senpai Bot', 'Chrome', '1.0.0'],
+    browser: ['Luxx RPG BOT', 'Chrome', '1.0.0'],
   });
   
   // Menyimpan session credentials ketika update
@@ -57,12 +60,15 @@ const connectToWhatsApp = async () => {
   });
   
   // Handle pesan masuk
-  sock.ev.on('messages.upsert', async (m) => {
+  sock.ev.on('messages.upsert', async (m, ctx) => {
     if (m.type === 'notify') {
+      const now = Date.now();
       for (const msg of m.messages) {
-        if (!msg.key.fromMe) {
+        if (!msg.key.fromMe && now > lastMs + 1000) {
           // Proses pesan dengan message handler
-          await processMessage(sock, msg);
+          await processMessage(sock, msg, ctx);
+          // Cooldown
+          lastMs = now
         }
       }
     }
