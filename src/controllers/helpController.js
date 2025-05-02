@@ -78,7 +78,7 @@ const getHelp = async (command) => {
 
 
 *🎮 GAME INFO 🎮*
-Bot WhatsApp berbasis game Gicell Senpai ini dibuat oleh Gicell Senpai Developer.
+Bot WhatsApp berbasis game Kyluxx ini dibuat oleh Kyluxx Developer.
 `;
 
     return {
